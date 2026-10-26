@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Loader2, RotateCw, TriangleAlert, X } from "lucide-react";
+import { XiaowenAvatar } from "@/components/brand/Brand";
+import { RotateCw, TriangleAlert, X } from "lucide-react";
 
 /**
  * Indeterminate loading overlay shown while a chat session is fetched from
@@ -58,18 +59,15 @@ export default function SessionLoadingView({
 
       {/* Logo + spinner (or the failure mark) */}
       <div className="flex items-center gap-3">
-        <img
-          src="/logo_black.png"
-          alt="DeepTutor"
-          width={32}
-          height={32}
-          className="h-8 w-8 select-none"
-          draggable={false}
-        />
+        <XiaowenAvatar size={44} className={failed ? "" : "xw-bob"} />
         {failed ? (
           <TriangleAlert className="h-5 w-5 text-[var(--destructive)]" />
         ) : (
-          <Loader2 className="h-5 w-5 animate-spin text-[var(--primary)]" />
+          <span className="xw-dots" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
         )}
       </div>
 

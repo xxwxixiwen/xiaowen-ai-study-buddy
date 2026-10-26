@@ -42,15 +42,17 @@ module.exports = {
           'system-ui',
           'sans-serif',
         ],
+        // Display face: rounded Latin + rounded/clean CJK for a friendly
+        // primary-school tone.
         serif: [
           'var(--font-serif)',
-          'Songti SC',
-          'STSong',
-          'Noto Serif SC',
-          'Source Han Serif SC',
-          'SimSun',
-          'Georgia',
-          'serif',
+          'Yuanti SC',
+          'PingFang SC',
+          'Hiragino Sans GB',
+          'Microsoft YaHei',
+          'Noto Sans SC',
+          'system-ui',
+          'sans-serif',
         ],
       },
       colors: {

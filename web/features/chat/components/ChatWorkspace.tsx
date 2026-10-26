@@ -3,6 +3,8 @@
 import { COMMAND_CONFIRMATION_FAILED } from "@/features/chat/transport/command-delivery";
 
 import { ResourceReuseContext, useResourceReusePolicy } from "@/components/chat/home/ResourceReuse";
+import { XiaowenAvatar } from "@/components/brand/Brand";
+import { BRAND_I18N } from "@/lib/brand";
 import { retainedKnowledgeBases } from "@/lib/resource-reuse";
 import { knowledgeBaseRef } from "@/lib/knowledge-helpers";
 import { scopedUrl } from "@/lib/workspace-scope";
@@ -2504,18 +2506,14 @@ export default function ChatWorkspace() {
                 </div>
               ) : !hasMessages ? (
                 <div className="flex w-full flex-1 min-h-0 items-end justify-center pb-14 animate-fade-in px-6">
-                  <div className="w-full max-w-[960px] flex items-center justify-center gap-4">
-                    <img
-                      src="/logo_black.png"
-                      alt="DeepTutor"
-                      width={40}
-                      height={40}
-                      className="h-10 w-10 select-none"
-                      draggable={false}
-                    />
-                    <h1 className="font-serif text-[40px] font-medium leading-[1.1] tracking-[-0.015em] text-[var(--foreground)]">
-                      {t(welcomeGreeting)}
-                    </h1>
+                  <div className="xw-hero w-full max-w-[760px] justify-center">
+                    <XiaowenAvatar size={104} className="xw-bob shrink-0" />
+                    <div className="xw-bubble min-w-0">
+                      <h1 className="xw-hero-title">{t(welcomeGreeting)}</h1>
+                      <p className="xw-hero-subtitle">
+                        {t(BRAND_I18N.welcomeSubtitle)}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ) : (

@@ -25,7 +25,7 @@ DEFAULT_INTERFACE_SETTINGS = {
     # "snow" is the pure-white neutral theme, shown as "Default" in the UI.
     "theme": "snow",
     "language": "en",
-    "sidebar_description": "✨ Data Intelligence Lab @ HKU",
+    "sidebar_description": "小文 AI 学伴",
     "sidebar_nav_order": {
         "start": ["/", "/history", "/knowledge-bases", "/notebooks"],
         "learnResearch": ["/question", "/solver", "/research", "/co_writer"],

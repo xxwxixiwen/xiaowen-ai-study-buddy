@@ -4,6 +4,8 @@ import { Suspense, useCallback, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { BrandWordmark, XiaowenAvatar } from "@/components/brand/Brand";
+import { BRAND_I18N } from "@/lib/brand";
 import { login, fetchAuthStatus, checkIsFirstUser } from "@/lib/auth";
 import {
   inheritLoginHash,
@@ -63,10 +65,14 @@ function LoginPageContent() {
   return (
     <div className="w-full max-w-sm">
       {/* Logo / Title */}
-      <div className="text-center mb-8">
-        <h1 className="font-serif text-2xl font-semibold text-[var(--foreground)] tracking-tight">
-          DeepTutor
+      <div className="mb-8 flex flex-col items-center text-center">
+        <XiaowenAvatar size={84} className="xw-bob mb-4" />
+        <h1 className="text-[26px]">
+          <BrandWordmark />
         </h1>
+        <p className="mt-2 text-sm font-medium text-[var(--primary)]">
+          {t(BRAND_I18N.tagline)}
+        </p>
         <p className="mt-1 text-sm text-[var(--muted-foreground)]">
           {t("Sign in to your account")}
         </p>
@@ -80,7 +86,7 @@ function LoginPageContent() {
       )}
 
       {/* Card */}
-      <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm px-8 py-8">
+      <div className="xw-auth-card bg-[var(--card)] border border-[var(--border)] px-8 py-8">
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Email or username */}
           <div>
@@ -141,7 +147,7 @@ function LoginPageContent() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 px-4 rounded-lg font-medium text-sm
+            className="w-full py-2.5 px-4 rounded-full font-semibold text-sm
                        bg-[var(--primary)] text-[var(--primary-foreground)]
                        hover:opacity-90 active:opacity-80
                        disabled:opacity-50 disabled:cursor-not-allowed
@@ -163,7 +169,7 @@ function LoginPageContent() {
       </p>
 
       <p className="mt-3 text-center text-xs text-[var(--muted-foreground)]">
-        {t("DeepTutor · Agent-Native Learning")}
+        {t(BRAND_I18N.footer)}
       </p>
     </div>
   );

@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import Image from "next/image";
+import { BrandLockup } from "@/components/brand/Brand";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
@@ -110,21 +110,8 @@ export default function AppShell({ sidebar, children }: AppShellProps) {
             >
               <Menu size={18} strokeWidth={1.7} />
             </button>
-            <Link href="/" className="flex items-center gap-1.5">
-              <Image
-                src="/logo.png"
-                alt="DeepTutor"
-                width={20}
-                height={20}
-                className="h-5 w-5"
-              />
-              <Image
-                src="/banner.png"
-                alt="DeepTutor"
-                width={897}
-                height={236}
-                className="h-[18px] w-auto"
-              />
+            <Link href="/" className="flex items-center text-[15px]">
+              <BrandLockup size={22} />
             </Link>
           </div>
 

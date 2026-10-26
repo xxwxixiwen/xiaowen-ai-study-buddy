@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Lora } from "next/font/google";
+import { Geist, Nunito } from "next/font/google";
 import "./globals.css";
+import "./brand.css";
+import { BRAND_ASSETS, BRAND_METADATA } from "@/lib/brand";
 import ThemeScript from "@/components/ThemeScript";
 import ToastViewport from "@/components/common/ToastViewport";
 import MotionProvider from "@/components/common/MotionProvider";
@@ -9,29 +11,31 @@ import { WorkspaceNavigation } from "@/components/workspaces/WorkspaceNavigation
 import { AppShellProvider } from "@/context/AppShellContext";
 import { I18nClientBridge } from "@/i18n/I18nClientBridge";
 
-// Geist matches the public site (deeptutor.info) and stays crisp at the
-// small UI sizes the composer/toolbars use, unlike the rounder Jakarta.
 const fontSans = Geist({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans",
 });
 
-const fontSerif = Lora({
+// Rounded display face for headings; CJK falls back to the rounded stack
+// declared in tailwind.config.js.
+const fontSerif = Nunito({
   subsets: ["latin"],
   display: "swap",
+  weight: ["600", "700", "800"],
   variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
-  title: "DeepTutor",
-  description: "Agent-native intelligent learning companion",
+  title: BRAND_METADATA.title,
+  description: BRAND_METADATA.description,
   icons: {
     icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: BRAND_ASSETS.mark, type: "image/svg+xml" },
+      { url: BRAND_ASSETS.favicon16, sizes: "16x16", type: "image/png" },
+      { url: BRAND_ASSETS.favicon32, sizes: "32x32", type: "image/png" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: BRAND_ASSETS.appleTouch,
   },
 };
 
@@ -42,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="zh-CN"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
       className={`${fontSans.variable} ${fontSerif.variable}`}
