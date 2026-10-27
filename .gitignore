@@ -2,6 +2,17 @@
 # DeepTutor Project .gitignore
 # ============================================
 
+# Xiaowen AI Study Buddy: local-only files and secrets
+K12_REPLICA_BRIEF.md
+CLAUDE.md
+*.key
+.env
+.venv/
+node_modules/
+__pycache__/
+data/
+handoff-*.zip
+
 # ============================================
 # User Generated Data and Outputs
 # ============================================
