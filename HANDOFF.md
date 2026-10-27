@@ -18,7 +18,7 @@
 - [x] 1 环境：可编辑安装（含 .[dev]）、前端依赖、dev 启动、中文；DeepSeek + 硅基流动 bge-m3 已配（Key 存私有 settings），`doctor --online` 6 项全 pass
 - [x] 2 白牌：完成（typecheck / i18n:check / build 通过，lint 无 error）
 - [x] 3 小文 Persona/Skill + 知识库 —— 验收通过，**等待用户确认后再做 4**
-- [ ] 4 视频字幕问答（只给缺口插件方案）
+- [x] 4 视频字幕问答：SRT→带时间点 Markdown（`scripts/k12/srt_to_md.py` → `k12-content/generated/`）+ 讲稿建库 `xiaowen-video`；Persona 加“必须标注视频时间点”规则；验收引用 02:36–03:04 等与字幕逐条一致。缺口与插件方案见 `docs/k12/视频字幕问答-缺口与最小插件方案.md`（未实现）
 - [ ] 5 收尾 README / .gitignore / 合规检索 / push 命令
 
 ## 白牌改动清单（只动视觉/品牌层）
@@ -48,6 +48,7 @@
 - 内置浏览器截图超时，改用 Playwright + 系统 Chrome。
 
 ## 待办 / 下一步
-- 用户确认任务 3 → 任务 4（immersive_reading 导入 SRT + 讲稿，引用时间点）。
+- 任务 5：README / .gitignore / 合规检索 / screenshots / push 命令。
+- 建视频库：`deeptutor kb create xiaowen-video --doc k12-content/generated/示例视频-小数乘法微课-字幕时间轴.md --doc k12-content/示例视频-小数乘法微课-讲稿.md`；对话时同时挂 xiaowen-video + xiaowen-math。
 - book/notebook/mastery 等提示词仍含 DeepTutor（仅模型内部），任务 5 合规检索时评估。
 - 后端 pytest：partners 目录需可选依赖（telegram），跑测试时 `--ignore=tests/services/partners`。
