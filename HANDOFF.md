@@ -15,9 +15,9 @@
 - Embedding：硅基流动 `https://api.siliconflow.cn/v1`，`BAAI/bge-m3`，1024 维
 
 ## 任务进度
-- [~] 1 环境：可编辑安装 ✅ 前端依赖 ✅ dev 启动 ✅ 中文 ✅；模型待用户填 Key → `deeptutor doctor --online --format json`
+- [x] 1 环境：可编辑安装（含 .[dev]）、前端依赖、dev 启动、中文；DeepSeek + 硅基流动 bge-m3 已配（Key 存私有 settings），`doctor --online` 6 项全 pass
 - [x] 2 白牌：完成（typecheck / i18n:check / build 通过，lint 无 error）
-- [ ] 3 小文 Persona/Skill + 知识库（完成后停下等确认）
+- [x] 3 小文 Persona/Skill + 知识库 —— 验收通过，**等待用户确认后再做 4**
 - [ ] 4 视频字幕问答（只给缺口插件方案）
 - [ ] 5 收尾 README / .gitignore / 合规检索 / push 命令
 
@@ -33,11 +33,21 @@
 - 后端默认 `sidebar_description`：`deeptutor/api/routers/settings.py`、`deeptutor/services/setup/init.py`
 - 一键换皮：替换 `web/public/brand/*` + 改 `web/app/brand.css` 顶部 `--brand-*` + `locales` 的 `brand.*`
 
+## 任务 3 改动
+- Persona 预设：`deeptutor/services/persona/presets/xiaowen/PERSONA.md`（正文复用 k12-content 人格 + 出题/判题/引用题库附则）；已同步到 `data/user/workspace/personas/xiaowen/`
+- 内置 Skill：`deeptutor/skills/builtin/xiaowen-math/SKILL.md`
+- 对话提示词身份句：`deeptutor/agents/chat/prompts/{zh,en}/{agentic_chat,chat_agent}.yaml`（DeepTutor → 小文 AI 学伴）
+- 测试同步：`tests/agents/chat/test_language_prompts.py`、`tests/services/persona/test_persona_service.py`
+- 知识库：`deeptutor kb create xiaowen-math --doc k12-content/数学知识点-小数乘法.md --doc k12-content/数学题库-小数乘法.md`（LlamaIndex，已设为默认库；数据在 data/，不入库，换机需重建）
+- 验收脚本：`.venv/bin/python scripts/k12/xiaowen_acceptance.py [decimal_point|pad_zero|quiz]`
+- 网页使用：对话输入框下方选人格 xiaowen + 知识库 xiaowen-math
+
 ## 踩坑
 - sharp 渲染 SVG：文件需纯 ASCII（中文用 `&#x...;` 实体），否则 XML 编码报错。
 - i18n:audit 对 de/pl 严格：新增键要补到全部语种。
 - 内置浏览器截图超时，改用 Playwright + 系统 Chrome。
 
 ## 待办 / 下一步
-- 用户填 Key → doctor 全绿 → 任务 3。
-- 后端提示词仍自称 DeepTutor（`deeptutor/agents/chat/prompts/*/chat_agent.yaml`），任务 3 用 Persona 覆盖并评估是否改提示词。
+- 用户确认任务 3 → 任务 4（immersive_reading 导入 SRT + 讲稿，引用时间点）。
+- book/notebook/mastery 等提示词仍含 DeepTutor（仅模型内部），任务 5 合规检索时评估。
+- 后端 pytest：partners 目录需可选依赖（telegram），跑测试时 `--ignore=tests/services/partners`。
