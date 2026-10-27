@@ -10,6 +10,11 @@
 - 界面语言：`data/user/settings/interface.json` → `language: zh`
 - 截图：`cd web && npx playwright screenshot --channel=chrome --viewport-size=1440,900 --wait-for-timeout=6000 http://localhost:3782/chat out.png`
 
+## 仓库与交接包
+- GitHub（私有）：https://github.com/xxwxixiwen/xiaowen-ai-study-buddy ，分支 main
+- 交接包：项目根 `handoff-xiaowen-20261027.zip`（含源码、.git、k12-content、README、.env.example、HANDOFF、需求文档；不含 .venv / node_modules / .next / data / .env）
+- 换机续作：解压 → 按 README「运行步骤」安装、填 Key、重建两个知识库 → 读本文件继续
+
 ## 模型（Key 由用户在网页 设置 → 提供方 / 语言模型 / 嵌入模型 填写，禁止入库）
 - LLM：DeepSeek `https://api.deepseek.com/v1`，`deepseek-chat` / `deepseek-reasoner`
 - Embedding：硅基流动 `https://api.siliconflow.cn/v1`，`BAAI/bge-m3`，1024 维
